@@ -2,15 +2,15 @@ class Solution {
 public:
     bool lemonadeChange(vector<int>& bills) {
         int five = 0, ten = 0;
-        for (auto &i : bills) {
-            if (i == 5) {
+        for (int bill : bills) {
+            if (bill == 5) {
                 five++;
-            } else if (i == 10) {
-                if (five < 1) return false;
+            } else if (bill == 10) {
+                if (!five) return false;
                 five--;
                 ten++;
             } else {
-                if (ten > 0 && five > 0) {
+                if (ten && five) {
                     ten--;
                     five--;
                 } else if (five >= 3) {
